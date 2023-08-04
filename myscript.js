@@ -88,4 +88,30 @@ function game()
 
     return `Silly human *beep* you never stood a chance. You lose.`;
 }
-console.log(game());
+//console.log(game());
+
+function simpleGame(){
+    let scorePlayer = 0;
+    let scoreComp = 0;
+
+    let playerChoice = '';
+    const buttons = document.querySelectorAll('button');
+
+    buttons.forEach((button) =>
+    {
+        button.addEventListener('click', (e) => {
+            playerChoice = e.target.id;
+            console.log("playerChoice=" + playerChoice);
+        });
+    });
+
+    if(playRound(playerChoice, getComputerChoice()) != 'tie')
+    {
+        if(playRound(playerChoice, getComputerChoice()) == 'player won')
+        {
+            document.getElementById('playerScore').textContent = `Player Score: `
+        }
+    }
+}
+
+simpleGame();

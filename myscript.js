@@ -1,3 +1,7 @@
+const WINNING_SCORE = 5;
+let scorePlayer = 0;
+let scoreComp = 0;
+const buttons = document.querySelectorAll('input');
 /*
 1. prompt user for input being
 2. if not rock, paper, or scissors, then alert user to retry with correct input
@@ -6,112 +10,64 @@
     "You Win! 'Rock' beats 'Scissors'"
 */
 
+
+
 function getComputerChoice() {
     let randomChoice = Math.floor(Math.random() * 3);
 
-    if(randomChoice === 0)
-        return "rock";
-    if(randomChoice === 1)
-        return "paper";
-    if(randomChoice === 2)
-        return "scissors";
+    switch(randomChoice){
+        case 0:
+            return "rock";
+        case 1:
+            return "paper";
+        case 2:
+            return "scissors";
+    }
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    
-    if(playerSelection == computerSelection)
-        return "tie";
-    
-    
-    let handWon = "";
+function playRound(choicePlayer, choiceComp){
 
-    if((playerSelection == "rock" || computerSelection == "rock") && (playerSelection == "paper" || computerSelection == "paper"))
+    // check for tie
+    if(choicePlayer === choiceComp)
     {
-        handWon = "paper";
-    }else {
-        if((playerSelection == "rock" || computerSelection == "rock") && (playerSelection == "scissors" || computerSelection == "scissors"))
-        {
-            handWon = "rock";
-        }else {
-            if((playerSelection == "paper" || computerSelection == "paper") && (playerSelection == "scissors" || computerSelection == "scissors"))
-            {
-                handWon = "scissors";
-            }
+        return
+    }
+
+
+
+    // if player wins
+    if((choicePlayer === "rock" && choiceComp === "scissors") || (choicePlayer === "paper" && choiceComp === "rock") || (choicePlayer === "scissors" && choiceComp === "paper")){
+        scorePlayer += 1;
+        let scorePlayerElement = document.querySelector('#scorePlayer')
+        scorePlayerElement.textContent = `Player Score: ${scorePlayer}`;
+    }else{
+        scoreComp += 1;
+        let scoreCompElement = document.querySelector('#scoreComputer')
+        scoreCompElement.textContent = `Computer Score: ${scoreComp}`;
+    }
+}
+
+function checkWin(){
+    if(scorePlayer >= WINNING_SCORE){
+        document.querySelector('#winMessage').textContent = "Player Won!";
+        let buttonElem = document.querySelectorAll('input');
+        buttonElem.forEach(elem => elem.disabled = true);
+        //document.querySelectorAll('input').disabled = true;
+    }else{
+        if(scoreComp >= WINNING_SCORE){
+            document.querySelector('#winMessage').textContent = "Computer Won!";
+            let buttonElem = document.querySelectorAll('input');
+            buttonElem.forEach(elem => elem.disabled = true);
         }
     }
-
-    if(playerSelection == handWon)
-    {
-        return "player won";
-    }
-    return "computer won";
 }
 
-function game()
+
+
+buttons.forEach((button) =>
 {
-    let playerWins = 0;
-
-    for(let i = 0; i < 5; i++){
-
-        let playerSelection = prompt(`Playing Rock, Paper, Scissors. Let's go, this is round ${i+1}`);
-
-        playerSelection = playerSelection.toLowerCase();
-
-        while(!(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors')) {
-            alert("Invalid input! Try again");
-            playerSelection = prompt(`Playing Rock, Paper, Scissors. Let's go, this is round ${i+1}`);
-
-            playerSelection = playerSelection.toLowerCase();
-        }
-
-        let computerSelection = getComputerChoice();
-        let result = playRound(playerSelection, computerSelection);
-
-        if(result == "tie")
-        {
-            i -= 1;
-            alert(`Tie! ${playerSelection} clashes with ${computerSelection}`);
-        }else if(result == "player won"){
-            playerWins++;
-            alert(`You win! ${playerSelection} beats ${computerSelection}`);
-        }else{
-            playerWins--;
-            alert(`You lose! ${computerSelection} beats ${playerSelection}`);
-        }
-    }
-
-    if(playerWins > 0)
-    {
-        return `You *beep* won this one, I'll *beep* get you next game!`;
-    }
-
-    return `Silly human *beep* you never stood a chance. You lose.`;
-}
-//console.log(game());
-
-function simpleGame(){
-    let scorePlayer = 0;
-    let scoreComp = 0;
-
-    let playerChoice = '';
-    const buttons = document.querySelectorAll('button');
-
-    buttons.forEach((button) =>
-    {
-        button.addEventListener('click', (e) => {
-            playerChoice = e.target.id;
-            console.log("playerChoice=" + playerChoice);
-        });
+    button.addEventListener('click', function(){
+        playRound(button.value, getComputerChoice());
+        checkWin();
     });
-
-    if(playRound(playerChoice, getComputerChoice()) != 'tie')
-    {
-        if(playRound(playerChoice, getComputerChoice()) == 'player won')
-        {
-            document.getElementById('playerScore').textContent = `Player Score: `
-        }
-    }
-}
-
-simpleGame();
+});

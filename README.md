@@ -1,6 +1,6 @@
 Rock Paper Scissors Game against an AI Rock-Paper-Scissors Champion
 
-live: 
+live: https://cashholb.github.io/rock-paper-scissors/
 
 iOS 16 icons by [icons8](https://icons8.com):
 - [rock](https://icons8.com/icon/37409/rock)

@@ -1,16 +1,15 @@
 Rock Paper Scissors Game against an AI Rock-Paper-Scissors Champion
 
-live: <a href="https://cashholb.github.io/rock-paper-scissors/" target="_blank">cashholb.github.io/rock-paper-scissors/</a>
+live: [cashholb.github.io/rock-paper-scissors](https://cashholb.github.io/rock-paper-scissors/)
 
-iOS 16 icons by [icons8](https://icons8.com):
-- <a href="https://icons8.com/icon/37409/rock" target="_blank">rock</a>
-- <a href="https://icons8.com/icon/6552/paper" target="_blank">
-- <a href="https://icons8.com/icon/37828/scissors" target="_blank">scissors</a>
+iOS 16 icons by [icons8](https://icons8.com)
+- [rock](https://icons8.com/icon/37409/rock)
+- [paper](https://icons8.com/icon/6552/paper)
+- [scissors](https://icons8.com/icon/37828/scissors)
 
 Lessons learned:
 - eventListener addition and removal
 - js closure property and event (found in onClickHandler)
 - css image transitions
 
-Expanded on from Odin Project Foundations Course: <a href="https://www.theodinproject.com/lessons/foundations-revisiting-rock-paper-scissors" target="_blank">Revisiting Rock Paper Scissors</a>
-
+Expanded on from Odin Project Foundations Course: [Find lesson here](https://www.theodinproject.com/lessons/foundations-revisiting-rock-paper-scissors)

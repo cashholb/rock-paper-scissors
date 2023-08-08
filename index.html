@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <!-- <script src="myscript.js" defer></script> !-->
 </head>
 <body>
-
-    <div id="scorePlayer">Player Score: 0</div>
-    <div id="scoreComputer">Computer Score: 0</div>
-
-    <input type="button" value="rock">
-    <input type="button" value="paper">
-    <input type="button" value="scissors">
-
-    <div id="winMessage"></div>
-    <script src="myscript.js"></script>
     
+    <h1>Rock Paper Scissors against the machine!</h1>
+    <h2>First to 5 wins!</h2>
+    
+    <div class="scores">
+        <div id="scorePlayer">Player Score: 0</div>
+        <div id="scoreComputer">Computer Score: 0</div>
+    </div>
+
+    <div class="images">
+        <img src="images/icons8-rock-100.png" id="rock" alt="IOS 16 rock icon by icons8">
+        <img src="images/icons8-paper-100.png" id="paper" alt="IOS 16 paper icon by icons8">
+        <img src="images/icons8-scissors-100.png" id="scissors" alt="IOS 16 scissors icon by icons8">    
+    </div>
+    <div class="roundOutcome"></div>
+    <div class="winMessage"></div>
+    <div class="resetButton"></div>
+
+    <script src="myscript.js"></script>
+
 </body>
 </html>
